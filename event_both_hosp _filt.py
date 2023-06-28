@@ -1,4 +1,4 @@
-#
+#edge selection implementation on event layouts of hospital dataset using both recurrent neighbours and area minimisation node reordering techniques
 from sys import argv
 import matplotlib
 matplotlib.use('Agg')
@@ -554,17 +554,7 @@ if __name__ == "__main__":
     #rn_title= 'Event plot filt (RN layout) '+ argv[1][:-4]
     gen_plot(G,pos,my_yticks,colour_lst, from_event, to_event, val_lst)
     plt.savefig(argv[1][:-3] + '_eventlayoutrn1filt.pdf', format = 'pdf', bbox_inches = 'tight')
-    img=argv[1][:-3] + '_eventlayoutrn1filt.png'
-    edges = edge.tf_edge_canny(img,
-                           
-                           thresholds = None, 
-                           otsu_ratio = 0.5,
-                           gaussian_blur_kernel = (5,5)) #check gaussian_blur_kernel
-    result = edge.attr_complexity_edge(edges,
-                                   n_random = 1000)
-    logging.info("Event layout filt with RN layout "+argv[1][:-4])
-    for key,value in result.items():
-        logging.info(key+' = '+str(value))
+    
         
     my_yticks_chr=[]
     for i in range(len(my_yticks)):
@@ -579,17 +569,7 @@ if __name__ == "__main__":
     #title='Event plot filt (Area min layout) ' + argv[1][:-4] 
     gen_plot(G,pos_1,my_yticks_1,colour_lst,from_event, to_event, val_lst)
     plt.savefig(argv[1][:-3] + '_eventlayout1filt.pdf', format = 'pdf', bbox_inches = 'tight')
-    img_a=argv[1][:-3] + '_eventlayout1filt.png'
-    edges_a = edge.tf_edge_canny(img_a,
-                           
-                           thresholds = None, 
-                           otsu_ratio = 0.5,
-                           gaussian_blur_kernel = (5,5)) #check gaussian_blur_kernel
-    result_a = edge.attr_complexity_edge(edges_a,
-                                   n_random = 1000)
-    logging.info("Event layout filt with area minimisation layout "+argv[1][:-4])
-    for key,value in result_a.items():
-        logging.info(key+' = '+str(value))
+    
         
     my_yticks_chr1=[]
     for i in range(len(my_yticks_1)):
@@ -597,5 +577,4 @@ if __name__ == "__main__":
     gen_plot(G,pos_1,my_yticks_chr1,colour_lst, from_event, to_event, val_lst)
     plt.savefig(argv[1][:-3] + '_eventlayout1chrfilt.pdf', format = 'pdf', bbox_inches = 'tight')    
     
-#check structural layouts pls reorder temporal layout
-#write definition for event layouts
+
