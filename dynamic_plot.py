@@ -35,8 +35,8 @@ xymargin = 0.2 # fraction of margins to the (non-strict) bounding box
 
 niter = 2 # how long to iterate the spring algorithm
 
-clock_x = 1.0 # setting dimensions of the clock
-clock_y = 1.0
+clock_x = 1.05 # setting dimensions of the clock
+clock_y = 1.05
 clock_radius = 0.05
 
 nframes = 10 # number of frames per round 4 sec = 4 * 25 fps = 100 
@@ -299,7 +299,7 @@ def update(num):
     
     nx.draw_networkx(G,ax=ax,pos=node_position,nodelist=nodelist2,node_color= colors[:n], node_size=nsize, with_labels=False)
     for node, (x, y) in pos.items():
-            text(x, y, list(node2index.keys())[list(node2index.values()).index(node)], fontsize=12*(nsize[node]/300),color='white',ha='center', va='center') 
+            text(x, y, list(node2index.keys())[list(node2index.values()).index(node)], fontsize=17,color='white',ha='center', va='center') 
 
     draw_clock(df['In'][i],ax)
     ax.set_xticks([])
