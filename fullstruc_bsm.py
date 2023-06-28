@@ -1,3 +1,4 @@
+#binary stress model algorithm utilised for display of structural layout of temporal network generated from team datasets
 import networkx as nx
 import matplotlib.pyplot as plt
 import warnings
@@ -8,10 +9,7 @@ from scipy.sparse.linalg import cg
 import time
 
 #https://github.com/tomzhch/IES-Backbone/blob/master/bsm.py
-"""
-FR layout but with an additional gravitational pull towards a gravitational center.
-The pull is proportional to the mass of the node.
-"""
+
 import matplotlib
 from teneto import TemporalNetwork, networkmeasures
 import matplotlib.colors as mcolors
@@ -342,9 +340,5 @@ if __name__ == '__main__':
     plt.show()
     
 
-#circular layout; edge widths according to interval of comm, colour based on closeness centrality, node size temporal degree
-
-
-#swap around the spatial ordering based on the different measures
 
 #weighted_agg to get edge widths combined interval, tnet for computation of degree centrality values for node size
