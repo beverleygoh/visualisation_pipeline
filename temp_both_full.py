@@ -1,4 +1,4 @@
-
+#both area minimisation and recurrent neighbours node reordering methods trialled and outputted for full temporal layouts of team datasets
 
 from sys import argv
 import matplotlib
@@ -18,10 +18,7 @@ from statistics import mean
 from teneto import TemporalNetwork, networkmeasures
 import random
 import matplotlib.ticker as tck
-import logging
 
-
-logging.basicConfig(filename='app37.log', filemode='a', format='%(name)s - %(message)s', level=logging.INFO)
 
 def expand_df(df):
     new_df=pd.DataFrame()
@@ -343,17 +340,6 @@ if __name__ == "__main__":
     gen_plot(my_yticks,my_yticks,one2one,one2all)
 
     plt.savefig(argv[1][:-3] + '_temporallayout.pdf', format = 'pdf', bbox_inches = 'tight')
-    img=argv[1][:-3] + '_temporallayout.png'
-    edges = edge.tf_edge_canny(img,
-                           
-                           thresholds = None, 
-                           otsu_ratio = 0.5,
-                           gaussian_blur_kernel = (5,5)) #check gaussian_blur_kernel
-    result = edge.attr_complexity_edge(edges,
-                                   n_random = 1000)
-    logging.info("Temporal Layout area minimisation layout "+argv[1][:-4])
-    for key,value in result.items():
-        logging.info(key+' = '+str(value))
 
     node_yticks=[]
     for ele in my_yticks:
