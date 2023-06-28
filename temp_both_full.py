@@ -1,9 +1,4 @@
-import os, sys
 
-athec_path = os.path.expanduser("~/Desktop/temporal network/athec-main/athec-main")
-
-sys.path.append(athec_path)
-from athec import misc, edge, box
 
 from sys import argv
 import matplotlib
@@ -385,17 +380,6 @@ if __name__ == "__main__":
     gen_plot(my_yticks_rn,my_yticks_rn,one2one,one2all)
 
     plt.savefig(argv[1][:-3] + '_temporallayout_rn.pdf', format = 'pdf', bbox_inches = 'tight')
-    img_rn=argv[1][:-3] + '_temporallayout_rn.png'
-    edges_rn = edge.tf_edge_canny(img_rn,
-                           
-                           thresholds = None, 
-                           otsu_ratio = 0.5,
-                           gaussian_blur_kernel = (5,5)) #check gaussian_blur_kernel
-    result_rn = edge.attr_complexity_edge(edges_rn,
-                                   n_random = 1000)
-    logging.info("Temporal Layout with RN layout "+argv[1][:-4])
-    for key,value in result_rn.items():
-        logging.info(key+' = '+str(value))
     
     node_yticks_rn=[]
     for ele in my_yticks_rn:
@@ -403,5 +387,4 @@ if __name__ == "__main__":
     gen_plot(my_yticks_rn,node_yticks_rn,one2one,one2all)
 
     plt.savefig(argv[1][:-3] + '_temporallayout_rn1.pdf', format = 'pdf', bbox_inches = 'tight')
-#updated expanded dataframe to take into account conversations to multiple people but not all, edited timescale
-#downsides: does not scale very well due to increased time complexity from permutation computation
+
