@@ -1,4 +1,4 @@
-
+#modified circular model utilised for display of structural layout of temporal network generated from hospital dataset
 
 from sys import argv
 import matplotlib
@@ -19,10 +19,7 @@ import math
 from teneto import TemporalNetwork, networkmeasures
 from matplotlib.pyplot import figure, text
 from temporal_graph import *
-import logging
 
-logging.basicConfig(filename='app41.log', filemode='a', format='%(name)s - %(message)s', level=logging.INFO)
-logging.info('\n')
 
 def expand_df2(df):
     nodelist.remove('All')
