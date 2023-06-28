@@ -1,3 +1,5 @@
+#fruchterman-reingold model algorithm utilised for display of structural layout of temporal network generated from team datasets
+
 import networkx as nx
 import matplotlib.pyplot as plt
 import warnings
@@ -5,10 +7,7 @@ from sys import argv
 import pandas as pd
 from math import sqrt
 from temporal_graph import *
-"""
-FR layout but with an additional gravitational pull towards a gravitational center.
-The pull is proportional to the mass of the node.
-"""
+
 import matplotlib
 from teneto import TemporalNetwork, networkmeasures
 import matplotlib.colors as mcolors
