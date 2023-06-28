@@ -1,3 +1,5 @@
+#pre-processing edge selection implementation on structural layout of team dataset using modified circular layout
+
 from sys import argv
 import matplotlib
 #matplotlib.use('Agg')
@@ -54,23 +56,7 @@ def expand_df2(df):
         
     return new_df
 
-def get_staticnx(df,timestamp,ii,node2index): #get snapshot at every moment in time
-    G=nx.DiGraph()
-    i=0
-    while time(df['In'][i])<timestamp and i<(len(df['In'])-1):
-        i+=1
-    idx_from=node2index[df['From'][i]]
-    idx_to=node2index[df['To'][i]]
-    if(idx_to)!=-1:
-        G.add_nodes_from([ii[idx_from],ii[idx_to]])
-        G.add_edge(ii[idx_from],ii[idx_to])
-    else:
-        G.add_nodes_from(ii)
-        for ele in ii:
-            if ele!=ii[idx_from]:
-                G.add_edge(ii[idx_from],ele)
-    print(G.edges())
-    return G
+
 
 
 
