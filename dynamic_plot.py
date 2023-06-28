@@ -29,7 +29,7 @@ weight2sizefac = 0.2 # for converting node weight to size
 weight2widthfac = 0.15 # for converting link weight to width
 
 nwindow = 600 # for smoothing of bounding box in the time dimension
-xymargin = 0.15 # fraction of margins to the (non-strict) bounding box
+xymargin = 0.07 # fraction of margins to the (non-strict) bounding box
 
 niter = 2 # how long to iterate the spring algorithm
 
