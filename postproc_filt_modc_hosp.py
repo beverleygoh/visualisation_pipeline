@@ -1,10 +1,4 @@
-import os, sys
-
-athec_path = os.path.expanduser("~/Desktop/temporal network/athec-main/athec-main")
-
-sys.path.append(athec_path)
-from athec import misc, edge, box
-
+#post-processing edge selection implementation on structural layout of hospital dataset using modified circular layout
 from sys import argv
 import matplotlib
 #matplotlib.use('Agg')
@@ -27,10 +21,7 @@ from temporal_graph import *
 from scipy.stats import binom
 from scipy.optimize import fsolve
 
-import logging
 
-logging.basicConfig(filename='app41.log', filemode='a', format='%(name)s - %(message)s', level=logging.INFO)
-logging.info('\n')
 
 #post-processing to remove unessential edges
 
@@ -406,8 +397,7 @@ if __name__ == "__main__":
         sm = plt.cm.ScalarMappable(cmap='viridis', norm=plt.Normalize(vmin = min(n_color), vmax=max(n_color)))
         cbar=fig.colorbar(sm)
         cbar.ax.tick_params(labelsize=15)
-        # cbar=fig.colorbar(res)
-        # res.set_clim(vmin=0, vmax=max(n_color))
+        
         
         cbar.set_label('temporal degree centrality',fontsize=20)
         
@@ -416,17 +406,7 @@ if __name__ == "__main__":
     fig.set_size_inches(13, 10)
     
     plt.savefig(argv[1][:-3] + '_structuralfilt4_1.pdf', format = 'pdf', bbox_inches = 'tight')
-    img=argv[1][:-3] + '_structuralfilt4_1.png'
-    edges = edge.tf_edge_canny(img,
-                           
-                           thresholds = None, 
-                           otsu_ratio = 0.5,
-                           gaussian_blur_kernel = (5,5)) #check gaussian_blur_kernel
-    result_a = edge.attr_complexity_edge(edges,
-                                   n_random = 1000)
-    logging.info("Structural layout filt modified circular (area min reordering) "+argv[1][:-4])
-    for key,value in result_a.items():
-        logging.info(key+' = '+str(value))
+    
     plt.show()
     
 
