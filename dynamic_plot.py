@@ -16,25 +16,26 @@ import pandas as pd
 import graphviz
 from itertools import permutations
 from statistics import mean
+from matplotlib.pyplot import figure, text
 layout_step = 0.2 # for the layout algorithm
 layout_k = 5.0 # preferred edge length
 layout_c = 0.3 # Relative strength of repulsive forces
 layout_p = 2.0 # Repulsive force exponent
 size_fac = 0.02 # rescaling node sizes
 
-expansion_fac = 1.4 # how much larger blobs should be after the smoothing
+expansion_fac = 1.5 # how much larger blobs should be after the smoothing
 link_weight_low = 0.5 # lower link weight cut off
 node_size_low = 0.9 # lower node size limit
 weight2sizefac = 0.2 # for converting node weight to size
 weight2widthfac = 0.15 # for converting link weight to width
 
 nwindow = 600 # for smoothing of bounding box in the time dimension
-xymargin = 0.07 # fraction of margins to the (non-strict) bounding box
+xymargin = 0.2 # fraction of margins to the (non-strict) bounding box
 
 niter = 2 # how long to iterate the spring algorithm
 
-clock_x = 0.99 # setting dimensions of the clock
-clock_y = 0.99
+clock_x = 1.0 # setting dimensions of the clock
+clock_y = 1.0
 clock_radius = 0.05
 
 nframes = 10 # number of frames per round 4 sec = 4 * 25 fps = 100 
@@ -271,32 +272,33 @@ def update(num):
     max_y=max(y_lst)
     ly=max_y-min_y
     xlen,ylen = matplotlib.pyplot.rcParams.get('figure.figsize')
-    aspect=ylen/xlen
     ax.set_xlim(-xymargin, 1.0 + xymargin)
     ax.set_ylim(-xymargin, 1.0 + xymargin)
     matplotlib.pyplot.axis('off')
     #print('hi')
-    pos_c=pos.copy()
+
     
     for j in range(n):
         pos[j][0]=float((pos[j][0]-min_x)/lx)
-        pos_c[j][0]=float((pos_c[j][0]-min_x)/lx)*1.3
+        
         pos[j][1]=float((pos[j][1]-min_y)/ly)
-        pos_c[j][1]=float((pos[j][1]-min_y)/ly)*1.3
+        
     
     node_position=pos.copy()
     
     if df['To'][i]==-1:
         #print(i)
         #print('bye')
-        cpoints.append(pos_c[df['From'][i]])
+        cpoints.append(pos[df['From'][i]])
         for ele in nodelist2:
             if ele!=df['From'][i]:
-                cpoints.append(pos_c[ele])
+                cpoints.append(pos[ele])
         
         ax.add_patch(mpatches.PathPatch(smooth_patch(cpoints), facecolor = colors[df['From'][i]], linestyle = '', alpha = 0.4, zorder = 3))       
     
-    nx.draw_networkx(G,ax=ax,pos=node_position,nodelist=nodelist2,node_color= colors[:n], node_size=nsize) 
+    nx.draw_networkx(G,ax=ax,pos=node_position,nodelist=nodelist2,node_color= colors[:n], node_size=nsize, with_labels=False)
+    for node, (x, y) in pos.items():
+            text(x, y, list(node2index.keys())[list(node2index.values()).index(node)], fontsize=12*(nsize[node]/300),color='white',ha='center', va='center') 
 
     draw_clock(df['In'][i],ax)
     ax.set_xticks([])
@@ -383,4 +385,5 @@ if __name__ == "__main__":
     ani.save("dynamic.mp4", writer=FFwriter)
     plt.show()
 
+    
     
