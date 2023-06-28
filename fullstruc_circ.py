@@ -1,9 +1,4 @@
-# import os, sys
-
-# athec_path = os.path.expanduser("~/Desktop/temporal network/athec-main/athec-main")
-
-# sys.path.append(athec_path)
-# from athec import misc, edge, box
+#standard circular model utilised for display of structural layout of temporal network generated from team datasets
 
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -11,10 +6,7 @@ import warnings
 from sys import argv
 import pandas as pd
 
-"""
-FR layout but with an additional gravitational pull towards a gravitational center.
-The pull is proportional to the mass of the node.
-"""
+
 import matplotlib
 from teneto import TemporalNetwork, networkmeasures
 import matplotlib.colors as mcolors
@@ -22,10 +14,7 @@ import matplotlib.cm as cm
 import numpy as np
 from matplotlib.pyplot import figure, text
 from temporal_graph import *
-import logging
 
-logging.basicConfig(filename='app41.log', filemode='a', format='%(name)s - %(message)s', level=logging.INFO)
-logging.info('\n')
 
 
 def expand_df(df):
@@ -228,7 +217,7 @@ if __name__ == '__main__':
     plt.show()
     
 
-#circular layout; edge widths according to interval of comm, colour based on closeness centrality, node size temporal degree
+#circular layout; edge widths according to normalised interval of comm, colour based on closeness centrality, node size temporal degree
 
 
 #swap around the spatial ordering based on the different measures
