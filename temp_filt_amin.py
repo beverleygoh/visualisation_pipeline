@@ -53,56 +53,8 @@ def expand_df2(df):
         
     return new_df
 
-# def get_staticnx(df,timestamp,ii,node2index): #get snapshot at every moment in time
-#     G=nx.DiGraph()
-#     i=0
-#     while time(df['In'][i])<timestamp and i<(len(df['In'])-1):
-#         i+=1
-#     idx_from=node2index[df['From'][i]]
-#     idx_to=node2index[df['To'][i]]
-#     if(idx_to)!=-1:
-#         G.add_nodes_from([ii[idx_from],ii[idx_to]])
-#         G.add_edge(ii[idx_from],ii[idx_to])
-#     else:
-#         G.add_nodes_from(ii)
-#         for ele in ii:
-#             if ele!=ii[idx_from]:
-#                 G.add_edge(ii[idx_from],ele)
-#     print(G.edges())
-#     return G
-
-# #tend is global
-# def avg_overlap(lag,df,ii,node2index): #avg overlap for a particular lag
-#     timestamp=0
-    
-#     dissimilarity_lst=[]
-
-#     while timestamp+lag<=tend:
-#         d = {}
-#         d['first']=list(get_staticnx(df,timestamp,ii,node2index).edges())
-#         d['lag']=list(get_staticnx(df,timestamp+lag,ii,node2index).edges())
-#         d2 = {k: set(v) for k,v in d.items()}
-#         jacc_coeff={(a,b): len(d2[a]&d2[b])/len(d2[a]|d2[b]) for a,b in combinations(d, 2)}
-#         jacc_val= list(jacc_coeff.values())[0]
-#         dissimilarity_lst.append(jacc_val)
-#         timestamp+=lag
-        
-#     avg=mean(dissimilarity_lst)
-#     return avg
-    
-
-# def get_sns_plot(lag_lst,df,ii,node2index): #specify lag=[60,120,180] in seconds
-#     avg_overlap_lst=[]
-#     for i in lag_lst:
-#         avg_overlap_lst.append(avg_overlap(i,df,ii,node2index))
-#     data_plot = pd.DataFrame({"Time":lag_lst, "Avg neighbourhood similarity":avg_overlap_lst})
-
-#     sns.lineplot(x = "Time", y = "Avg neighbourhood similarity", data=data_plot)
-#     plt.savefig(argv[1][:-3]+'similaritygraph' + '.png', format = 'png', bbox_inches = 'tight')
-# #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #  #
 
 def area (ii,one2one):
-
     a = 0.0
     for i in range(one2one.shape[0]): #number of rows
         a += abs((ii[int(one2one[i,2])] - ii[int(one2one[i,3])]) * (one2one[i,1] - one2one[i,0]))
@@ -341,5 +293,3 @@ if __name__ == "__main__":
     gen_plot(node_yticks,new_one2one,one2all,ii)
 
     plt.savefig(argv[1][:-3] + '_temporalfilt4_1_2.pdf', format = 'pdf', bbox_inches = 'tight')
-#updated expanded dataframe to take into account conversations to multiple people but not all, edited timescale
-#downsides: does not scale very well due to increased time complexity from permutation computation
