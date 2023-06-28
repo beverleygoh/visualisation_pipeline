@@ -1,9 +1,4 @@
-# import os, sys
-
-# athec_path = os.path.expanduser("~/Desktop/temporal network/athec-main/athec-main")
-
-# sys.path.append(athec_path)
-# from athec import misc, edge, box
+#modified circular model utilised for display of structural layout of temporal network generated from team datasets
 
 from sys import argv
 import matplotlib
@@ -24,10 +19,7 @@ import math
 from teneto import TemporalNetwork, networkmeasures
 from matplotlib.pyplot import figure, text
 from temporal_graph import *
-import logging
 
-logging.basicConfig(filename='app41.log', filemode='a', format='%(name)s - %(message)s', level=logging.INFO)
-logging.info('\n')
 
 
 def expand_df(df):
