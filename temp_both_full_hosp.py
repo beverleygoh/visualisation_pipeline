@@ -1,3 +1,4 @@
+#both area minimisation and recurrent neighbours node reordering methods trialled and outputted for full temporal layouts of hospital dataset
 
 from sys import argv
 import matplotlib
