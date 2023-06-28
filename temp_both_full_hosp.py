@@ -17,22 +17,6 @@ from statistics import mean
 from teneto import TemporalNetwork, networkmeasures
 import random
 import time
-import logging
-
-
-
-# def expand_df(df):
-#     new_df=pd.DataFrame()
-#     for index, rows in df.iterrows():
-#         string=rows.To
-#         if len(string)>1 and string!="all":
-#             string_lst=[*string]
-#             for ele in string_lst:
-#                 if ele.isalpha():
-#                     new_df=pd.concat([new_df,df.iloc[[index]].assign(To=ele)], ignore_index=True)
-#         else:
-#             new_df=pd.concat([new_df,df.iloc[[index]]], ignore_index=True)
-#     return new_df
 
 def expand_df2(df):
     nodelist.remove('All')
@@ -135,10 +119,6 @@ def timed (s):
 def gen_plot(node_yticks,label_yticks,one2one, one2all, all2all): 
     plt.figure()
     fig, ax= plt.subplots()
-    # node_yticks=[]
-    # for ele in list(ii):
-    #     node_yticks.append(list(node2index.keys())[list(node2index.values()).index(ele)])
-    #plt.title(title, fontsize=20)
     plt.yticks(np.arange(n,dtype=int), label_yticks, fontsize=15)
     plt.xticks(np.arange(0, tend, 10), fontsize=10)
     #ax.set_xticklabels([])
@@ -379,17 +359,6 @@ if __name__ == "__main__":
     
     gen_plot(my_yticks,my_yticks,one2one,one2all,all2all)
     plt.savefig(argv[1][:-3] + '_temporallayout.pdf', format = 'pdf', bbox_inches = 'tight')
-    img=argv[1][:-3] + '_temporallayout.png'
-    edges = edge.tf_edge_canny(img,
-                           
-                           thresholds = None, 
-                           otsu_ratio = 0.5,
-                           gaussian_blur_kernel = (5,5)) #check gaussian_blur_kernel
-    result = edge.attr_complexity_edge(edges,
-                                   n_random = 1000)
-    logging.info("Temporal Layout area minimisation layout "+argv[1][:-4])
-    for key,value in result.items():
-        logging.info(key+' = '+str(value))
 
     node_yticks=[]
     for ele in my_yticks:
