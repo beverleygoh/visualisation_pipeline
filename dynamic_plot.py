@@ -1,3 +1,4 @@
+#node sizes increasing with increasing actions (node being the sender) over time, with clock indicating progression of the discussion. Nodes positioned based on networkx spring layout.
 import matplotlib
 matplotlib.use('Agg')
 import csv
