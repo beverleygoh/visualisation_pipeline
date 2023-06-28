@@ -1,10 +1,4 @@
-import os, sys
-
-athec_path = os.path.expanduser("~/Desktop/temporal network/athec-main/athec-main")
-
-sys.path.append(athec_path)
-from athec import misc, edge, box
-
+#
 from sys import argv
 import matplotlib
 matplotlib.use('Agg')
@@ -26,10 +20,7 @@ from matplotlib.pyplot import text
 import random
 from collections import Counter
 from teneto import TemporalNetwork, networkmeasures
-import logging
 
-logging.basicConfig(filename='app37.log', filemode='a', format='%(name)s - %(message)s', level=logging.INFO)
-logging.info('\n')
 #no pre or post processing because does not take into account any temporal measures for display; displays temporal network as it is to reflect visualisation patterns
 
 def expand_df2(df):
