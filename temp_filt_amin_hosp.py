@@ -1,9 +1,4 @@
-import os, sys
 
-athec_path = os.path.expanduser("~/Desktop/temporal network/athec-main/athec-main")
-
-sys.path.append(athec_path)
-from athec import misc, edge, box
 
 from sys import argv
 import matplotlib
@@ -23,10 +18,7 @@ from statistics import mean
 from scipy.stats import binom
 from scipy.optimize import fsolve
 import random
-import logging
 
-logging.basicConfig(filename='app37.log', filemode='a', format='%(name)s - %(message)s', level=logging.INFO)
-logging.info('\n')
 
 #no pre or post processing because does not take into account any temporal measures for display; displays temporal network as it is to reflect visualisation patterns
 
@@ -477,17 +469,7 @@ if __name__ == "__main__":
     gen_plot2(my_yticks,my_yticks,new_one2one, one2all, all2all)
 
     plt.savefig(argv[1][:-3] + '_temporalfilt4_1.pdf', format = 'pdf', bbox_inches = 'tight')
-    img=argv[1][:-3] + '_temporalfilt4_1.png'
-    edges = edge.tf_edge_canny(img,
-                           
-                           thresholds = None, 
-                           otsu_ratio = 0.5,
-                           gaussian_blur_kernel = (5,5)) #check gaussian_blur_kernel
-    result = edge.attr_complexity_edge(edges,
-                                   n_random = 1000)
-    logging.info("Temporal Layout backbone update with area minimisation layout "+argv[1][:-4])
-    for key,value in result.items():
-        logging.info(key+' = '+str(value))
+    
     node_yticks=[]
     for ele in my_yticks:
         node_yticks.append(list(node2index.keys())[list(node2index.values()).index(ele)])
@@ -495,5 +477,4 @@ if __name__ == "__main__":
     gen_plot2(my_yticks,node_yticks,new_one2one,one2all,all2all)
 
     plt.savefig(argv[1][:-3] + '_temporalfilt4_1_2.pdf', format = 'pdf', bbox_inches = 'tight')
-#updated expanded dataframe to take into account conversations to multiple people but not all, edited timescale
-#downsides: does not scale very well due to increased time complexity from permutation computation
+
