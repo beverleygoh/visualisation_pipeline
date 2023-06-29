@@ -236,7 +236,7 @@ if __name__ == "__main__":
     global tend, n, node2index2, nodelist
 
     if len(argv) != 2:
-        print('usage: python3 reordernodes_structural4-1-1.py [file name]')
+        print('usage: python3 fullstruc_modc.py [file name]')
         exit()
 
     df = pd.read_csv(argv[1],delimiter = ';')
