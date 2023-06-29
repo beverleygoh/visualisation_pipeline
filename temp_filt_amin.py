@@ -197,7 +197,7 @@ if __name__ == "__main__":
     global tend, n, node_index, edge_filterdf, nodelist
 
     if len(argv) != 2:
-        print('usage: python3 temporal_filt4-1.py [file name]')
+        print('usage: python3 temp_filt_amin.py [file name]')
         exit()
 
     df = pd.read_csv(argv[1],delimiter = ';')
