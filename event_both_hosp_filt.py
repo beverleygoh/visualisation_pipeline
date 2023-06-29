@@ -385,7 +385,7 @@ if __name__ == "__main__":
 
     #time axis t for xpos, ii[index val] for ypos
     if len(argv) != 2:
-        print('usage: python3 event_layout_both.py [file name]')
+        print('usage: python3 event_both_hosp_filt.py [file name]')
         exit()
 
     df = pd.read_csv(argv[1],delimiter = ';')
