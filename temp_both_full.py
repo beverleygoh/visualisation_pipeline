@@ -285,7 +285,7 @@ if __name__ == "__main__":
     global tend, n, nodelist
 
     if len(argv) != 2:
-        print('usage: python3 thesis_viz1.py [file name]')
+        print('usage: python3 temp_both_full.py [file name]')
         exit()
 
     df = pd.read_csv(argv[1],delimiter = ';')
