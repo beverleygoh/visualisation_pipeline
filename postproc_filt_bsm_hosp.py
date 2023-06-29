@@ -230,7 +230,7 @@ if __name__ == '__main__':
     global edge_filterdf, node_index, nodelist
 
     if len(argv) != 2:
-        print('usage: python3 reordernodes_structural5.py [file name]')
+        print('usage: python3 postproc_filt_bsm_hosp.py [file name]')
         exit()
 
     df = pd.read_csv(argv[1],delimiter = ';')
