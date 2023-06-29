@@ -312,7 +312,7 @@ if __name__ == "__main__":
     global n, aspect, node2index, tend, nsize, node_position, df#nsize is for increasing size of nodes according to number of interactions over time
 
     if len(argv) != 2:
-        print('isage: python3 anime.py [file name]')
+        print('isage: python3 dynamic_plot.py [file name]')
         exit()
         
     df = pd.read_csv(argv[1],delimiter = ';')
