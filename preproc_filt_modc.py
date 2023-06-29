@@ -228,7 +228,7 @@ if __name__ == "__main__":
     global tend, n, fromlist, node2index2, edge_filterdf, node_index, nodelist
 
     if len(argv) != 2:
-        print('usage: python3 thesis_viz1.py [file name]')
+        print('usage: python3 preproc_filt_modc.py [file name]')
         exit()
 
     df = pd.read_csv(argv[1],delimiter = ';')
